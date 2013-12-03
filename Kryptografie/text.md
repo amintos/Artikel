@@ -18,4 +18,23 @@ Mit der Erfindung der Chiffrierscheibe im 15. Jahrhundert waren auch andere Vers
 
 *Chiffrierscheibe für beliebige Caesar-Chiffren*
 
+Moderne Blockchiffren
+---------------------
+
+Die klassische Caesar-Chiffre operiert nur über einzelnen Buchstaben als "Eingabe", was sie anfällig für Muster im Text macht - tritt z.B. der Buchstabe E sehr häufig auf, wird in einem um drei Verschobenen Alphabet der Buchstabe H gehäuft auftreten. Über diese Korrelation lässt sich der Schlüssel schnell ermitteln. 
+
+Betrachtet man hingegen mehrere Buchstaben gleichzeitig - quasi ein Alphabet aus 26 x 26 Zeichen - und ersetzt sie durch die gleiche Anzahl Geheimbuchstaben, werden Korrelationen undeutlicher. Doch eine solche Übersetzungstabelle hätte bereits 676 Einträge.
+
+    AA | AB | AC | ... | BA | BB | ... | ZY | ZZ
+    RP | RQ | RR | ... | SP | SQ | ... | RN | RO 
+
+
+Für größere "Blöcke" zusammenhängender Daten ist also eher eine mathematische Beschreibug nützlich als eine Chiffrierscheibe oder Tabelle. Daten werden fortan nur noch als Zahlen betrachtet, sei es der ASCII-Code eines Buchstaben oder eine andere Codierung.
+
+    X' := X + k
+
+Hier sei X' unser verschlüsselter Block (***Ciphertext***), X unser ***Klartext*** und k der Schlüssel. Die Addition wird in der Kryptografie meist ohne Berücksichtigung des Überlaufs betrachtet - gibt es 256 Zeichen, dann ist z.B. 255 + 1 = 0, man rechnet *modulo 256*.
+
+
+
 
