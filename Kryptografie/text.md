@@ -54,9 +54,19 @@ Diese werden nicht nur zwischen Schlüssel und Plaintext angewendet, sondern auch
     3.)  B' = (D <<< 37) XOR C'
     4.)  D' = (B <<<  5) XOR A'
     
-In der Threefish-Verschlüsselung wird diese mathematische Transformation 72-mal hintereinander ausgeführt. Dabei werden stets andere Rotationsweiten als nur 37 und 5 verwendet. Alle vier Durchläufe wird ein sog. ***Rundenschlüssel*** auf den gesamten 256-Bit-Block addiert. Man erkennt, dass man 72 / 4 = 18 Rundenschlüssel benötigt. Diese müssen daher durch mathematische Tricks aus einem einzigen 256-Bit breiten Schlüsselblock gewonnen werden - dieses Verfahren wird als ***Schlüsselexpansion*** bezeichnet.
+Im ***Threefish-Algorithmus*** wird diese mathematische Transformation 72-mal hintereinander ausgeführt. Dabei werden stets andere Rotationsweiten als nur 37 und 5 verwendet. Alle vier Durchläufe wird ein sog. ***Rundenschlüssel*** auf den gesamten 256-Bit-Block addiert. Man erkennt, dass man 72 / 4 = 18 Rundenschlüssel benötigt. Diese müssen daher durch mathematische Tricks aus einem einzigen 256-Bit breiten Schlüsselblock gewonnen werden - dieses Verfahren wird als ***Schlüsselexpansion*** bezeichnet und kann bisweilen komplizierter sein als die eigentliche Verschlüsselung.
 
-Ziel dieses sehr aufwändigen Durchwürfeln von Bits ist es, jeglichen Zusammenhang zwischen Plaintext, Schlüssel und Ciphertext zu verschleiern. Würde man auch nur ein einziges Bit im Plaintext oder im Schlüssel verändern, würde ein völlig anderer, unvorhersagbarer Ciphertext entstehen. 
+Ziel dieses sehr aufwändigen Durchwürfeln von Bits ist es, jeglichen Zusammenhang zwischen Plaintext, Schlüssel und Ciphertext zu verschleiern. Würde man auch nur ein einziges Bit im Plaintext oder im Schlüssel verändern, würde ein völlig anderer, unvorhersagbarer Ciphertext entstehen. Dies nennt man ***Diffusion***. Und doch ist all dies umkehrbar, wenn man die Rundenschlüssel kennt: Aus Addition wird Subtraktion, Linksrotation wird zu Rechtsrotation, XOR bleibt bestehen und alle Operationen werden in umgekehrter Reihenfolge angewendet - die Umkehroperation der oben dargestellten Transformation sei dem Leser überlassen.
+
+
+
+### Die Rücktransformation in Threefish:
+    1.)  B = (D' XOR A') >>> 5
+    2.)  D = (B' XOR C') >>> 37
+    3.)  C = C' - D  (modulo 2^64)
+    4.)  A = A' - B  (modulo 2^64)
+
+
 
 
 
