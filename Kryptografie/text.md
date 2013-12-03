@@ -18,8 +18,10 @@ Mit der Erfindung der Chiffrierscheibe im 15. Jahrhundert waren auch andere Vers
 
 *Chiffrierscheibe für beliebige Caesar-Chiffren*
 
-Moderne Blockchiffren
----------------------
+Blockchiffren
+-------------
+
+### Caesar als erste Blockchiffre
 
 Die klassische Caesar-Chiffre operiert nur über einzelnen Buchstaben als "Eingabe", was sie anfällig für Muster im Text macht - tritt z.B. der Buchstabe E sehr häufig auf, wird in einem um drei Verschobenen Alphabet der Buchstabe H gehäuft auftreten. Über diese Korrelation lässt sich der Schlüssel schnell ermitteln. 
 
@@ -29,12 +31,32 @@ Betrachtet man hingegen mehrere Buchstaben gleichzeitig - quasi ein Alphabet aus
     RP | RQ | RR | ... | SP | SQ | ... | RN | RO 
 
 
-Für größere "Blöcke" zusammenhängender Daten ist also eher eine mathematische Beschreibug nützlich als eine Chiffrierscheibe oder Tabelle. Daten werden fortan nur noch als Zahlen betrachtet, sei es der ASCII-Code eines Buchstaben oder eine andere Codierung.
+Für größere "Blöcke" zusammenhängender Daten ist also eher eine mathematische Beschreibug nützlich als eine Chiffrierscheibe oder Tabelle. Weisen wir also den Buchstaben A - Z die Zahlen 0 bis 25 zu. Die Caesar-Chiffe lässt sich dann einfach als Addition mit einem Schlüssel modulo 26 ausdrücken: ```C = P + K (mod 26)```. C, der verschlüsselte Buchstabe, wird als ***Ciphertext*** bezeichnet, der Buchstabe der ursprünglichen Nachricht P als ***Plaintext*** und die Verschiebung K als ***Schlüssel (Key)***.
 
-    X' := X + k
+Was spricht also dagegen, 256 im Speicher liegende Bits auf einmal zu nehmen (das entspricht 32 Buchstaben in ASCII-Codierung) und eine große Addition modulo 2^256 mit einem möglichst zufälligen Schlüssel auszuführen? Zunächst nichts, alle ```2^256```  Schlüssel auszuprobieren ist momentan technisch ausgeschlossen, ein Fortschritt gegenüber den 26 Schlüsseln bei Caesar. 
 
-Hier sei X' unser verschlüsselter Block (***Ciphertext***), X unser ***Klartext*** und k der Schlüssel. Die Addition wird in der Kryptografie meist ohne Berücksichtigung des Überlaufs betrachtet - gibt es 256 Zeichen, dann ist z.B. 255 + 1 = 0, man rechnet *modulo 256*.
+Das Problem hierbei ist nur, dass bei Kenntniss von Plaintext und Ciphertext der Schlüssel trivial via ```K = C - P (mod 2^256)``` gewonnen und zum Entschlüsseln anderer, eventuell unbekannter Blöcke eingesetzt werden kann.
 
+### High-Tech Blockchiffre Schritt für Schritt
+
+Möchte man den Fallstricken der einfachen Addition entgehen, muss man sich weiteren Operationen bedienen. Häufige Operationen sind folgende:
+
+    Addition:        1100   +   0101  =  0001   (modulo 2^4)
+    Subtraktion:     1100   -   0101  =  0111
+    Exklusiv-Oder:   1100  XOR  0101  =  1001
+    Linksrotation:   00001100  <<< 3  =  01100000
+    Rechtsrotation:  00001100  >>> 3  =  10000001
+
+Diese werden nicht nur zwischen Schlüssel und Plaintext angewendet, sondern auch zwischen verschiedenen Teilen des Plaintexts selbst. Beispielsweise kann man einen 256-Bit-Block auch als vier einzelne 64-Bit-Blöcke A, B, C und D betrachten und diese untereinander verknüpfen, um die Ausgabeblöcke A', B', C' und D' zu erhalten:
+
+    1.)  A' = A + B  (modulo 2^64)
+    2.)  C' = C + D  (modulo 2^64)
+    3.)  B' = (D <<< 37) XOR C'
+    4.)  D' = (B <<<  5) XOR A'
+    
+In der Threefish-Verschlüsselung wird diese mathematische Transformation 72-mal hintereinander ausgeführt. Dabei werden stets andere Rotationsweiten als nur 37 und 5 verwendet. Alle vier Durchläufe wird ein sog. ***Rundenschlüssel*** auf den gesamten 256-Bit-Block addiert. Man erkennt, dass man 72 / 4 = 18 Rundenschlüssel benötigt. Diese müssen daher durch mathematische Tricks aus einem einzigen 256-Bit breiten Schlüsselblock gewonnen werden - dieses Verfahren wird als ***Schlüsselexpansion*** bezeichnet.
+
+Ziel dieses sehr aufwändigen Durchwürfeln von Bits ist es, jeglichen Zusammenhang zwischen Plaintext, Schlüssel und Ciphertext zu verschleiern. Würde man auch nur ein einziges Bit im Plaintext oder im Schlüssel verändern, würde ein völlig anderer, unvorhersagbarer Ciphertext entstehen. 
 
 
 
