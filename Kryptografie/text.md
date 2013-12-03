@@ -58,9 +58,7 @@ Im ***Threefish-Algorithmus*** wird diese mathematische Transformation 72-mal hi
 
 Ziel dieses aufwändigen Durchwürfeln von Bits ist es, jeglichen Zusammenhang zwischen Plaintext, Schlüssel und Ciphertext zu verschleiern. Würde man auch nur ein einziges Bit im Plaintext oder im Schlüssel verändern, würde ein völlig anderer, unvorhersagbarer Ciphertext entstehen. Dies nennt man ***Diffusion***. Und doch ist all dies umkehrbar, wenn man die Rundenschlüssel kennt: Aus Addition wird Subtraktion, Linksrotation wird zu Rechtsrotation, XOR bleibt bestehen und alle Operationen werden in umgekehrter Reihenfolge angewendet, die Rundenschlüssel in umgekehrter Reihenfolge alle vier Runden subtrahiert - die Umkehroperation der oben dargestellten Transformation sei dem Leser überlassen.
 
-
-
-### Die Rücktransformation in Threefish:
+### (Die Rücktransformation in Threefish)
     1.)  B = (D' XOR A') >>> 5
     2.)  D = (B' XOR C') >>> 37
     3.)  C = C' - D  (modulo 2^64)
