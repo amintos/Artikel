@@ -42,7 +42,7 @@ Das Problem hierbei ist nur, dass bei Kenntniss von Plaintext und Ciphertext der
 Möchte man den Fallstricken der einfachen Addition entgehen, muss man sich weiteren Operationen bedienen. Häufige Operationen sind folgende:
 
     Addition:        1100   +   0101  =  0001   (modulo 2^4)
-    Subtraktion:     1100   -   0101  =  0111
+    Subtraktion:     1100   -   0101  =  0111   (modulo 2^4)
     Exklusiv-Oder:   1100  XOR  0101  =  1001
     Linksrotation:   00001100  <<< 3  =  01100000
     Rechtsrotation:  00001100  >>> 3  =  10000001
@@ -56,7 +56,7 @@ Diese werden nicht nur zwischen Schlüssel und Plaintext angewendet, sondern auch
     
 Im ***Threefish-Algorithmus*** wird diese mathematische Transformation 72-mal hintereinander ausgeführt. Dabei werden stets andere Rotationsweiten als nur 37 und 5 verwendet. Alle vier Durchläufe wird ein sog. ***Rundenschlüssel*** auf den gesamten 256-Bit-Block addiert. Man erkennt, dass man 72 / 4 = 18 Rundenschlüssel benötigt. Diese müssen daher durch mathematische Tricks aus einem einzigen 256-Bit breiten Schlüsselblock gewonnen werden - dieses Verfahren wird als ***Schlüsselexpansion*** bezeichnet und kann bisweilen komplizierter sein als die eigentliche Verschlüsselung.
 
-Ziel dieses sehr aufwändigen Durchwürfeln von Bits ist es, jeglichen Zusammenhang zwischen Plaintext, Schlüssel und Ciphertext zu verschleiern. Würde man auch nur ein einziges Bit im Plaintext oder im Schlüssel verändern, würde ein völlig anderer, unvorhersagbarer Ciphertext entstehen. Dies nennt man ***Diffusion***. Und doch ist all dies umkehrbar, wenn man die Rundenschlüssel kennt: Aus Addition wird Subtraktion, Linksrotation wird zu Rechtsrotation, XOR bleibt bestehen und alle Operationen werden in umgekehrter Reihenfolge angewendet - die Umkehroperation der oben dargestellten Transformation sei dem Leser überlassen.
+Ziel dieses aufwändigen Durchwürfeln von Bits ist es, jeglichen Zusammenhang zwischen Plaintext, Schlüssel und Ciphertext zu verschleiern. Würde man auch nur ein einziges Bit im Plaintext oder im Schlüssel verändern, würde ein völlig anderer, unvorhersagbarer Ciphertext entstehen. Dies nennt man ***Diffusion***. Und doch ist all dies umkehrbar, wenn man die Rundenschlüssel kennt: Aus Addition wird Subtraktion, Linksrotation wird zu Rechtsrotation, XOR bleibt bestehen und alle Operationen werden in umgekehrter Reihenfolge angewendet, die Rundenschlüssel in umgekehrter Reihenfolge alle vier Runden subtrahiert - die Umkehroperation der oben dargestellten Transformation sei dem Leser überlassen.
 
 
 
@@ -70,3 +70,4 @@ Ziel dieses sehr aufwändigen Durchwürfeln von Bits ist es, jeglichen Zusammenhan
 
 
 
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/ECClines.svg/680px-ECClines.svg.png)
