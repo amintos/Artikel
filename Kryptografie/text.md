@@ -80,9 +80,9 @@ Wenn das komplette Entschlüsseln von vorne keine Option ist, z.B. in Festplatten
 Elliptische Kurven zum Schlüsselaustausch
 -----------------------------------------
 
-Moderne Blockchiffren lösen zwar das Problem der sicheren Aufbewahrung der Daten entlang ihrer Transportwege, sie sind jedoch ***symmetrisch***: Der Schlüssel zum Entschlüsseln ist der gleiche wie zum Verschlüsseln und muss daher selbst sicher transportiert werden.
+Moderne Blockchiffren lösen zwar das Problem der sicheren Aufbewahrung und Übermittlung der Daten, sie sind jedoch *symmetrisch*: Der Schlüssel zum Entschlüsseln ist der gleiche wie zum Verschlüsseln und muss daher selbst sicher transportiert werden.
 
-Eine erste Möglichkeit, wie zwei Parteien sich ohne Kenntniserlangung dritter über einen Schlüssel verständigen können, wurde 1976 von Whitfield Diffie und Martin Hellman eingeführt. Eine elegante Weiterentwicklung ist heute als Elliptic Curve Diffie-Hellman (ECDH) Verfahren bekannt. Um diese zu verstehen, betrachten wir zunächst elliptische Kurven an sich.
+Eine erste Möglichkeit, wie zwei Parteien sich ohne Kenntniserlangung dritter *asymmetrisch* über einen Schlüssel verständigen können, wurde 1976 von Whitfield Diffie und Martin Hellman eingeführt. Eine moderne Weiterentwicklung ist heute als Elliptic Curve Diffie-Hellman (ECDH) Verfahren bekannt. Um diese zu verstehen, betrachten wir zunächst elliptische Kurven an sich.
 
 ### Elliptische Kurven
 
@@ -90,9 +90,9 @@ Eine Gleichung der Form ```y^2 = x^3 + px + q``` wird als elliptische Kurve beze
 
 ![](https://raw.github.com/amintos/Artikel/master/Kryptografie/curve.png)
 
-Die bemerkenswerte Eigenschaft dieser Kurven ist, dass man auf ihnen eine ***Addition auf Punkten*** definieren kann: Zieht man eine Gerade durch zwei Punkte auf der Kurve, schneidet sie diese stets in einem dritten Punkt oder im Unendlichen, was wir auch als gültigen Punkt auffassen. Spiegelt man den Schnittpunkt an der x-Achse, erhält man die Summe der beiden Punkte. Weiterhin sei die Punktnegation ```-P``` definiert als die Spiegelung von ```P``` an der x-Achse (Beachte,  dass der "Nullpunkt" ```0 = P + (-P)``` im unendlichen liegt.) Bei der Verdoppelung ```P + P = 2P``` nimmt man als Gerade einfach die Tangente durch ```P```.
+Die bemerkenswerte Eigenschaft dieser Kurven ist, dass man auf ihnen eine ***Addition auf Punkten*** definieren kann: Zieht man eine Gerade durch zwei Punkte auf der Kurve, schneidet sie diese stets in einem dritten Punkt (oder im Unendlichen, was wir auch als gültigen Punkt auffassen). Spiegelt man diesen Schnittpunkt an der x-Achse, erhält man die Summe der beiden Punkte. Weiterhin sei die Punktnegation ```-P``` definiert als die Spiegelung von ```P``` an der x-Achse (Hier wird sichtbar, dass der "Nullpunkt" ```0 = P + (-P)``` jener Punkt im Unendlichen ist). Bei der Verdoppelung ```P + P = 2P``` nimmt man als Gerade einfach die Tangente durch ```P```.
 
-Mit diesen Werkzeugen können wir uns eine Multiplikation  ```n*P``` definieren als ```n```-maliges addieren. Das lässt sich durch mathematische Tricks enorm beschleunigen, z.B. ```15P = 16P - P = 2*2*2*2P + (-P)``` benötigt nur eine Negation, eine Addition und vier Verdoppelungen statt 15 Additionen. Diese mathematischen Abkürzungen heißen *Non-adjacent forms*.
+Mit diesen Werkzeugen können wir uns eine Multiplikation  ```n*P``` definieren als ```n```-maliges addieren. Das lässt sich durch mathematische Abkürzungen allerdings beschleunigen, z.B. ist ```15*P = 16*P - P = 2*2*2*2*P + (-P)``` und benötigt nur eine Negation, eine Addition und vier Verdoppelungen statt 15 Additionen. Diese Darstellung des Koeffizienten ```n``` heißt *Non-adjacent form*.
 
 In der Praxis kommen allerdings keine kontinuierlichen elliptischen Kurven zum Einsatz, sondern nur deren **ganzzahlige Lösungen**. Weiterhin werden alle mathematischen Operationen modulo einer Primzahl ```N``` ausgeführt - das bedeutet, dass jede X- oder Y-Koordinate "überläuft", sobald sie größer als ```N - 1``` wird. Gute ```N``` erlauben eine große Anzahl an ganzzahligen Lösungen, z.B. bietet sich die Mersenne-Primzahl ```2^521 - 1``` an. Die Punktmultiplikation funktioniert hier noch immer.
 
@@ -107,6 +107,9 @@ Punktmultiplikation ist assoziativ, d.h. ```a*(b*P) = b*(a*P)```. Beim ECDH-Schl
 
 Beide könnten nun beispielsweise die X-Koordinate des gemeinsamen Punktes als Schlüssel für ihre symmetrische Blockchiffre verwenden und so sicher kommunizieren.
 
+
+Zusammenfassung
+---------------
 
 
 
