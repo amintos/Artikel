@@ -18,10 +18,8 @@ Mit der Erfindung der Chiffrierscheibe im 15. Jahrhundert waren auch andere Vers
 
 *Chiffrierscheibe für beliebige Caesar-Chiffren*
 
-Blockchiffren
--------------
-
-### Caesar als erste Blockchiffre
+Caesars Blockchiffre
+--------------------
 
 Die klassische Caesar-Chiffre operiert nur über einzelnen Buchstaben als "Eingabe", was sie anfällig für Muster im Text macht - tritt z.B. der Buchstabe E sehr häufig auf, wird in einem um drei Verschobenen Alphabet der Buchstabe H gehäuft auftreten. Über diese Korrelation lässt sich der Schlüssel schnell ermitteln. 
 
@@ -37,8 +35,8 @@ Was spricht also dagegen, 256 im Speicher liegende Bits auf einmal zu nehmen (da
 
 Das Problem hierbei ist nur, dass bei Kenntniss von Plaintext und Ciphertext der Schlüssel trivial via ```K = C - P (mod 2^256)``` gewonnen und zum Entschlüsseln anderer, eventuell unbekannter Blöcke eingesetzt werden kann.
 
-
-### High-Tech Blockchiffre Schritt für Schritt
+Blockchiffren im 21. Jahrhundert
+--------------------------------
 
 Möchte man den Fallstricken der einfachen Addition entgehen, muss man sich weiteren Operationen bedienen. Häufige Operationen sind folgende:
 
@@ -65,7 +63,7 @@ Es gibt neben dieser Variante auch Verschlüsselungen, die mathematische Operatio
 
 Ein weiteres wichtiges Merkmal dieser Blockchiffre ist die Verwendung von **konstanten** Rotationen. Viele CPUs können Rotation und *Bit-Shift* nicht für alle Rotationsweiten gleichschnell ausführen. Würde man die Rotationsweite abhängig von Schlüssel oder Plaintext machen, kann eine Beobachtung der Ausführungszeiten ebenfalls Rückschlüsse auf die Daten erlauben. 
 
-### Mehr als einen Block verschlüsseln
+### Mehr verschlüsseln
 
 16 oder 32 Bytes an gleichzeitig verschlüsselbaren Daten sind nicht allzuviel, wenn man große Datenmengen betrachtet. Auch hier können durch Wiederholung von ganzen Blöcken (z.B. großen schwarzen und weißen Bereichen in Bildern) Muster entstehen:
 
@@ -77,7 +75,7 @@ Eine Technik, dies zu vermeiden, ist das Addieren des verschlüsselten vorherigen
 
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/CBC_encryption.svg/601px-CBC_encryption.svg.png)
 
-Wenn das komplette Entschlüsseln von vorne keine Option ist, z.B. in Festplattenverschlüsselungen á la TrueCrypt, kombiniert man stattdessen den Originalschlüssel mit der Position des Blocks zu einem einzigartigen Block-Schlüssel, indem man die Block-Position z.B. mit dem Originalschlüssel verschlüsselt. Dies erlaubt es, jeden Block für sich genommen zu entschlüsseln.
+Wenn das komplette Entschlüsseln von vorne keine Option ist, z.B. in Festplattenverschlüsselungen á la TrueCrypt, kombiniert man stattdessen den Originalschlüssel mit der Position des Blocks zu einem einzigartigen Block-Schlüssel, indem man die Block-Position zunächst mit dem Originalschlüssel verschlüsselt. Dies erlaubt es, jeden Block für sich genommen zu entschlüsseln.
 
 Elliptische Kurven zum Schlüsselaustausch
 -----------------------------------------
@@ -94,13 +92,21 @@ Eine Gleichung der Form ```y^2 = x^3 + px + q``` wird als elliptische Kurve beze
 
 Die bemerkenswerte Eigenschaft dieser Kurven ist, dass man auf ihnen eine ***Addition auf Punkten*** definieren kann: Zieht man eine Gerade durch zwei Punkte auf der Kurve, schneidet sie diese stets in einem dritten Punkt oder im Unendlichen, was wir auch als gültigen Punkt auffassen. Spiegelt man den Schnittpunkt an der x-Achse, erhält man die Summe der beiden Punkte. Weiterhin sei die Punktnegation ```-P``` definiert als die Spiegelung von ```P``` an der x-Achse (Beachte,  dass der "Nullpunkt" ```0 = P + (-P)``` im unendlichen liegt.) Bei der Verdoppelung ```P + P = 2P``` nimmt man als Gerade einfach die Tangente durch ```P```.
 
-Mit diesen Werkzeugen können wir uns eine Multiplikation  ```nP``` definieren als ```n```-maliges addieren. Das lässt sich durch mathematische Tricks enorm beschleunigen, z.B. ```15P = 16P - P = 2*2*2*2P + (-P)``` benötigt nur eine Negation, eine Addition und vier Verdoppelungen statt 15 Additionen. Diese mathematischen Abkürzungen heißen *Non-adjacent forms*.
+Mit diesen Werkzeugen können wir uns eine Multiplikation  ```n*P``` definieren als ```n```-maliges addieren. Das lässt sich durch mathematische Tricks enorm beschleunigen, z.B. ```15P = 16P - P = 2*2*2*2P + (-P)``` benötigt nur eine Negation, eine Addition und vier Verdoppelungen statt 15 Additionen. Diese mathematischen Abkürzungen heißen *Non-adjacent forms*.
 
-In der Praxis kommen allerdings keine kontinuierlichen elliptischen Kurven zum Einsatz, sondern nur deren **ganzzahlige Lösungen**. Weiterhin werden alle mathematischen Operationen modulo einer Primzahl ```N``` ausgeführt - das bedeutet, dass jede X- oder Y-Koordinate "überläuft", sobald sie größer als ```N - 1``` wird. Gute ```N``` erlauben eine große Anzahl an ganzzahligen Lösungen, z.B. bietet sich die große Mersenne-Primzahl ```2^521 - 1``` an. Die Punktmultiplikation funktioniert hier noch immer.
+In der Praxis kommen allerdings keine kontinuierlichen elliptischen Kurven zum Einsatz, sondern nur deren **ganzzahlige Lösungen**. Weiterhin werden alle mathematischen Operationen modulo einer Primzahl ```N``` ausgeführt - das bedeutet, dass jede X- oder Y-Koordinate "überläuft", sobald sie größer als ```N - 1``` wird. Gute ```N``` erlauben eine große Anzahl an ganzzahligen Lösungen, z.B. bietet sich die Mersenne-Primzahl ```2^521 - 1``` an. Die Punktmultiplikation funktioniert hier noch immer.
 
 ### Schlüsselaustausch mit Punkten
 
-Punktmultiplikation ist Assiziativ, d.h. ```a*(b*P) = b*(a*P)```. 
+Punktmultiplikation ist assoziativ, d.h. ```a*(b*P) = b*(a*P)```. Beim ECDH-Schlüsselaustausch wird diese Eigenschaft genutzt. Angenommen, Alice und Bob möchten sich auf einen Schlüssel einigen, dann verfahren sie wie folgt:
+
+1. Alice und Bob einigen sich auf eine elliptische Kurve (inklusive der Primzahl ```N```) und einen ganzzahligen Punkt ```P```
+2. Alice erzeugt eine Zufallszahl ```a``` zwischen 1 und ```N - 1```. Dies ist ihr privater Schlüssel. Sie veröffentlicht ```a*P``` als öffentlichen Schlüssel. Es ist technisch nicht möglich, aus zwei Punkten ```a*P``` und ```P``` den Koeffizienten ```a``` direkt zu berechnen, wenn ```N``` und ```a``` sehr groß sind.
+3. Bob erzeugt seine private Zufallszahl ```b``` und veröffentlicht seinen öffentlichen Schlüssel ```b*P```
+4. Alice kann nun Bobs öffentlichen Schlüssel ```b*P``` beziehen und ihn mit ihrem privaten Schlüssel multiplizieren. Sie erhält ```a*(b*P)```. Bob kann seinerseits Alices öffentlichen Schlüssel mit seinem privaten multiplizieren und erhält ```b*(a*P)``` und somit den gleichen Punkt. 
+
+Beide könnten nun beispielsweise die X-Koordinate des gemeinsamen Punktes als Schlüssel für ihre symmetrische Blockchiffre verwenden und so sicher kommunizieren.
+
 
 
 
