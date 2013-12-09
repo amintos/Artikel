@@ -37,6 +37,8 @@ Was spricht also dagegen, 256 im Speicher liegende Bits auf einmal zu nehmen (da
 
 Das Problem hierbei ist nur, dass bei Kenntniss von Plaintext und Ciphertext der Schlüssel trivial via ```K = C - P (mod 2^256)``` gewonnen und zum Entschlüsseln anderer, eventuell unbekannter Blöcke eingesetzt werden kann.
 
+Es gibt allerdings Verschlüsselungen, die mathematische Operationen und das Ersetzen mittels einer großen Ersetzungstabelle (*Substitutions- oder S-Box*) abwechselnd ausführen (z.B. RC4). Tut man dies in einem modernen Rechner, kann es sein, dass Tabelleneinträge im Cache der CPU landen und plötzlich schneller gelesen werden, wenn sie nochmal verwendet werden. Beobachtet nun ein anders Programm diese *Cache-Timings*, kann es Rückschlüsse auf die gerade verschlüsselten Daten ziehen. Die Möglichkeit dieser ***Seitenkanal-Angriffe*** sollte Verschlüsselungssoftware vermeiden, was sich technisch meist als äußerst schwer herausstellt.
+
 ### High-Tech Blockchiffre Schritt für Schritt
 
 Möchte man den Fallstricken der einfachen Addition entgehen, muss man sich weiteren Operationen bedienen. Häufige Operationen sind folgende:
@@ -58,14 +60,21 @@ Im ***Threefish-Algorithmus*** wird diese mathematische Transformation 72-mal hi
 
 Ziel dieses aufwändigen Durchwürfeln von Bits ist es, jeglichen Zusammenhang zwischen Plaintext, Schlüssel und Ciphertext zu verschleiern. Würde man auch nur ein einziges Bit im Plaintext oder im Schlüssel verändern, würde ein völlig anderer, unvorhersagbarer Ciphertext entstehen. Dies nennt man ***Diffusion***. Und doch ist all dies umkehrbar, wenn man die Rundenschlüssel kennt: Aus Addition wird Subtraktion, Linksrotation wird zu Rechtsrotation, XOR bleibt bestehen und alle Operationen werden in umgekehrter Reihenfolge angewendet, die Rundenschlüssel in umgekehrter Reihenfolge alle vier Runden subtrahiert - die Umkehroperation der oben dargestellten Transformation sei dem Leser überlassen.
 
+Ein wichtiges Merkmal dieser Blockchiffre ist die Verwendung von **konstanten** Rotationen. Viele CPUs können diese Rotation nicht für alle Rotationsweiten gleichschnell ausführen. Würde man die Rotationsweite abhängig von Schlüssel oder Plaintext machen, kann demnach eine Beobachtung der Ausführungszeiten Rückschlüsse auf die Daten erlauben. Ebenso schließt diese Blockchiffre Angriffe mittels Cache-Timings aus, da sie keine S-Boxen verwendet. Dies macht eine sichere Implementierung vergleichsweise einfach.
+
+
+Elliptische Kurven zum Schlüsselaustausch
+-----------------------------------------
+
+
+
+
+![](https://raw.github.com/amintos/Artikel/master/Kryptografie/curve.png)
+
+
+
 ### (Die Rücktransformation in Threefish)
     1.)  B = (D' XOR A') >>> 5
     2.)  D = (B' XOR C') >>> 37
     3.)  C = C' - D  (modulo 2^64)
     4.)  A = A' - B  (modulo 2^64)
-
-
-
-
-
-![](https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/ECClines.svg/680px-ECClines.svg.png)
