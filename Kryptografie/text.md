@@ -8,7 +8,7 @@ Die Kunst, eine Botschaft durch gezieltes „Verschleiern“ für fremde unkenntlich 
 
 *Pflanze, Heuschrecke und Stoff sind Hieroglyphen, die in einigen religiösen Inschriften auftraten und vereinzelt die Lesung für uneingeweihte erschweren sollten.*
 
-Um die Vertraulichkeit militärischer Korrespondenz zu wahren, setzte der römische Feldherr Gaius Julius Caesar laut Überlieferung die später nach ihm benannte Cäsar-Chiffre ein: Dabei wurden jeder Buchstabe des Alphabets durch einen um drei Positionen weiter hinten liegenden ersetzt. 
+Um die Vertraulichkeit militärischer Korrespondenz zu wahren, setzte der römische Feldherr Gaius Julius Caesar laut Überlieferung die später nach ihm benannte Cäsar-Chiffre ein: Dabei wurde jeder Buchstabe des Alphabets durch einen um drei Positionen weiter hinten liegenden ersetzt. 
 
 ![](http://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Caesar3.svg/320px-Caesar3.svg.png)
 
@@ -33,11 +33,10 @@ Betrachtet man hingegen mehrere Buchstaben gleichzeitig - quasi ein Alphabet aus
 
 Für größere "Blöcke" zusammenhängender Daten ist also eher eine mathematische Beschreibug nützlich als eine Chiffrierscheibe oder Tabelle. Weisen wir also den Buchstaben A - Z die Zahlen 0 bis 25 zu. Die Caesar-Chiffe lässt sich dann einfach als Addition mit einem Schlüssel modulo 26 ausdrücken: ```C = P + K (mod 26)```. C, der verschlüsselte Buchstabe, wird als ***Ciphertext*** bezeichnet, der Buchstabe der ursprünglichen Nachricht P als ***Plaintext*** und die Verschiebung K als ***Schlüssel (Key)***.
 
-Was spricht also dagegen, 256 im Speicher liegende Bits auf einmal zu nehmen (das entspricht 32 Buchstaben in ASCII-Codierung) und eine große Addition modulo 2^256 mit einem möglichst zufälligen Schlüssel auszuführen? Zunächst nichts, alle ```2^256```  Schlüssel auszuprobieren ist momentan technisch ausgeschlossen, ein Fortschritt gegenüber den 26 Schlüsseln bei Caesar. 
+Was spricht also dagegen, 256 im Speicher liegende Bits auf einmal zu nehmen (das entspricht 32 Zeichen in ASCII-Codierung) und eine große Addition modulo 2^256 mit einem möglichst zufälligen Schlüssel auszuführen? Zunächst nichts, alle ```2^256```  Schlüssel auszuprobieren ist momentan technisch ausgeschlossen, das ist ein Fortschritt gegenüber den 26 Schlüsseln bei Caesar. 
 
 Das Problem hierbei ist nur, dass bei Kenntniss von Plaintext und Ciphertext der Schlüssel trivial via ```K = C - P (mod 2^256)``` gewonnen und zum Entschlüsseln anderer, eventuell unbekannter Blöcke eingesetzt werden kann.
 
-Es gibt allerdings Verschlüsselungen, die mathematische Operationen und das Ersetzen mittels einer großen Ersetzungstabelle (*Substitutions- oder S-Box*) abwechselnd ausführen (z.B. RC4). Tut man dies in einem modernen Rechner, kann es sein, dass Tabelleneinträge im Cache der CPU landen und plötzlich schneller gelesen werden, wenn sie nochmal verwendet werden. Beobachtet nun ein anders Programm diese *Cache-Timings*, kann es Rückschlüsse auf die gerade verschlüsselten Daten ziehen. Die Möglichkeit dieser ***Seitenkanal-Angriffe*** sollte Verschlüsselungssoftware vermeiden, was sich technisch meist als äußerst schwer herausstellt.
 
 ### High-Tech Blockchiffre Schritt für Schritt
 
@@ -60,13 +59,30 @@ Im ***Threefish-Algorithmus*** wird diese mathematische Transformation 72-mal hi
 
 Ziel dieses aufwändigen Durchwürfeln von Bits ist es, jeglichen Zusammenhang zwischen Plaintext, Schlüssel und Ciphertext zu verschleiern. Würde man auch nur ein einziges Bit im Plaintext oder im Schlüssel verändern, würde ein völlig anderer, unvorhersagbarer Ciphertext entstehen. Dies nennt man ***Diffusion***. Und doch ist all dies umkehrbar, wenn man die Rundenschlüssel kennt: Aus Addition wird Subtraktion, Linksrotation wird zu Rechtsrotation, XOR bleibt bestehen und alle Operationen werden in umgekehrter Reihenfolge angewendet, die Rundenschlüssel in umgekehrter Reihenfolge alle vier Runden subtrahiert - die Umkehroperation der oben dargestellten Transformation sei dem Leser überlassen.
 
-Ein wichtiges Merkmal dieser Blockchiffre ist die Verwendung von **konstanten** Rotationen. Viele CPUs können diese Rotation nicht für alle Rotationsweiten gleichschnell ausführen. Würde man die Rotationsweite abhängig von Schlüssel oder Plaintext machen, kann demnach eine Beobachtung der Ausführungszeiten Rückschlüsse auf die Daten erlauben. Ebenso schließt diese Blockchiffre Angriffe mittels Cache-Timings aus, da sie keine S-Boxen verwendet. Dies macht eine sichere Implementierung vergleichsweise einfach.
+### Sicherheitsaspekte bei der Implementierung
 
+Es gibt neben dieser Variante auch Verschlüsselungen, die mathematische Operationen und das Ersetzen mittels einer großen, relativ zufällig aussehenden Ersetzungstabelle (*Substitutions- oder S-Box*) abwechselnd ausführen (z.B. RC4). Tut man dies in einem modernen Rechner, kann es sein, dass Tabelleneinträge im Cache der CPU abgelegt werden und plötzlich schneller gelesen werden, wenn sie nochmal verwendet werden. Beobachtet nun ein anderes Programm diese *Cache-Timings*, kann es Rückschlüsse auf die gerade verschlüsselten Daten ziehen. Die Möglichkeit dieser ***Seitenkanal-Angriffe*** sollte Verschlüsselungssoftware vermeiden, was sich technisch meist als äußerst schwer herausstellt. Threefish schließt Angriffe mittels Cache-Timings aus, da sie keine S-Boxen verwendet. Dies macht eine sichere Implementierung einfacher.
+
+Ein weiteres wichtiges Merkmal dieser Blockchiffre ist die Verwendung von **konstanten** Rotationen. Viele CPUs können Rotation und *Bit-Shift* nicht für alle Rotationsweiten gleichschnell ausführen. Würde man die Rotationsweite abhängig von Schlüssel oder Plaintext machen, kann eine Beobachtung der Ausführungszeiten ebenfalls Rückschlüsse auf die Daten erlauben. 
+
+### Mehr als einen Block verschlüsseln
+
+16 oder 32 Bytes an gleichzeitig verschlüsselbaren Daten sind nicht allzuviel, wenn man große Datenmengen betrachtet. Auch hier können durch Wiederholung von ganzen Blöcken (z.B. großen schwarzen und weißen Bereichen in Bildern) Muster entstehen:
+
+![](https://upload.wikimedia.org/wikipedia/commons/5/56/Tux.jpg)
+![](https://upload.wikimedia.org/wikipedia/commons/f/f0/Tux_ecb.jpg)
+![](https://upload.wikimedia.org/wikipedia/commons/a/a0/Tux_secure.jpg)
+
+Eine Technik, dies zu vermeiden, ist das Addieren des verschlüsselten vorherigen Blocks in den Plaintext des nächsten Blocks, das sog. Cipher-Block Chaining (CBC). Der erste Block wird mit einem zufälligen Wert (*Initialisierungsvektor*) versehen, welcher unverchlüsselt mit den Daten mitgeschickt wird. Dadurch ist der Empfänger zwar gezwungen, die Blöcke in der gleichen Reihenfolge zu entschlüsseln, in der sie verschlüsselt wurden, verräterische Muster werden allerdings versteckt.
+
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/CBC_encryption.svg/601px-CBC_encryption.svg.png)
+
+Wenn das komplette Entschlüsseln von vorne keine Option ist, z.B. in Festplattenverschlüsselungen á la TrueCrypt, kombiniert man stattdessen den Originalschlüssel mit der Position des Blocks zu einem einzigartigen Block-Schlüssel, indem man die Block-Position z.B. mit dem Originalschlüssel verschlüsselt. Dies erlaubt es, jeden Block für sich genommen zu entschlüsseln.
 
 Elliptische Kurven zum Schlüsselaustausch
 -----------------------------------------
 
-
+Moderne Blockchiffren lösen zwar das Problem der sicheren Aufbewahrung der Daten entlang ihrer Transportwege, sie sind jedoch ***symmetrisch***: Der Schlüssel zum Entschlüsseln ist der gleiche wie zum Verschlüsseln und muss daher selbst sicher transportiert werden.
 
 
 ![](https://raw.github.com/amintos/Artikel/master/Kryptografie/curve.png)
