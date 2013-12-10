@@ -1,7 +1,7 @@
 Moderne Verschlüsselungen
 =========================
 
-Die Kunst, eine Botschaft durch gezieltes „Verschleiern“ für Fremde unkenntlich zu machen, ist fast so alt wie Schrift selbst. Schon die alten Ägypter setzten vor fünf Jahrtausenden spezielle Hieroglyphen ein, die nur einem ausgewählten Zirkel geistlicher bekannt waren. 
+Die Kunst, eine Botschaft durch gezieltes „Verschleiern“ für Fremde unkenntlich zu machen, ist fast so alt wie Schrift selbst. Schon die alten Ägypter setzten vor fünf Jahrtausenden spezielle Hieroglyphen ein, die nur einem ausgewählten Zirkel Geistlicher bekannt waren. 
 
 
 ![](http://bits.wikimedia.org/static-1.23wmf2/extensions/wikihiero/img/hiero_M2.png) ![ ](http://bits.wikimedia.org/static-1.23wmf2/extensions/wikihiero/img/hiero_L4.png) ![](https://bits.wikimedia.org/static-1.23wmf2/extensions/wikihiero/img/hiero_S28.png)
@@ -21,7 +21,7 @@ Mit der Erfindung der Chiffrierscheibe im 15. Jahrhundert waren auch andere Vers
 Caesars Blockchiffre
 --------------------
 
-Die klassische Caesar-Chiffre operiert nur über einzelnen Buchstaben als "Eingabe", was sie anfällig für Muster im Text macht - tritt z.B. der Buchstabe E sehr häufig auf, wird in einem um drei Verschobenen Alphabet der Buchstabe H gehäuft auftreten. Über diese Korrelation lässt sich der Schlüssel schnell ermitteln. 
+Die klassische Caesar-Chiffre operiert nur über einzelnen Buchstaben als "Eingabe", was sie anfällig für Muster im Text macht - tritt z.B. der Buchstabe E sehr häufig auf, wird in einem um drei verschobenen Alphabet der Buchstabe H gehäuft auftreten. Über diese Korrelation lässt sich der Schlüssel schnell ermitteln. 
 
 Betrachtet man hingegen mehrere Buchstaben gleichzeitig - quasi ein Alphabet aus 26 x 26 Zeichen - und ersetzt sie durch die gleiche Anzahl Geheimbuchstaben, werden Korrelationen undeutlicher. Doch eine solche Übersetzungstabelle hätte bereits 676 Einträge.
 
@@ -29,11 +29,11 @@ Betrachtet man hingegen mehrere Buchstaben gleichzeitig - quasi ein Alphabet aus
     RP | RQ | RR | ... | SP | SQ | ... | RN | RO 
 
 
-Für größere "Blöcke" zusammenhängender Daten ist also eher eine mathematische Beschreibug nützlich als eine Chiffrierscheibe oder Tabelle. Weisen wir also den Buchstaben A - Z die Zahlen 0 bis 25 zu. Die Caesar-Chiffe lässt sich dann einfach als Addition mit einem Schlüssel modulo 26 ausdrücken: ```C = P + K (mod 26)```. C, der verschlüsselte Buchstabe, wird als ***Ciphertext*** bezeichnet, der Buchstabe der ursprünglichen Nachricht P als ***Plaintext*** und die Verschiebung K als ***Schlüssel (Key)***.
+Für größere "Blöcke" zusammenhängender Daten ist also eher eine mathematische Beschreibung nützlich als eine Chiffrierscheibe oder Tabelle. Weisen wir also den Buchstaben A - Z die Zahlen 0 bis 25 zu. Die Caesar-Chiffe lässt sich dann einfach als Addition mit einem Schlüssel modulo 26 ausdrücken: ```C = P + K (mod 26)```. C, der verschlüsselte Buchstabe, wird als ***Ciphertext*** bezeichnet, der Buchstabe der ursprünglichen Nachricht P als ***Plaintext*** und die Verschiebung K als ***Schlüssel (Key)***.
 
 Was spricht also dagegen, 256 im Speicher liegende Bits auf einmal zu nehmen (das entspricht 32 Zeichen in ASCII-Codierung) und eine große Addition modulo 2^256 mit einem möglichst zufälligen Schlüssel auszuführen? Zunächst nichts, alle ```2^256```  Schlüssel auszuprobieren ist momentan technisch ausgeschlossen, das ist ein Fortschritt gegenüber den 26 Schlüsseln bei Caesar. 
 
-Das Problem hierbei ist nur, dass bei Kenntniss von Plaintext und Ciphertext der Schlüssel trivial via ```K = C - P (mod 2^256)``` gewonnen und zum Entschlüsseln anderer, eventuell unbekannter Blöcke eingesetzt werden kann.
+Das Problem hierbei ist nur, dass bei Kenntnis von Plaintext und Ciphertext der Schlüssel trivial via ```K = C - P (mod 2^256)``` gewonnen und zum Entschlüsseln anderer, eventuell unbekannter Blöcke eingesetzt werden kann.
 
 Blockchiffren im 21. Jahrhundert
 --------------------------------
@@ -55,7 +55,7 @@ Diese werden nicht nur zwischen Schlüssel und Plaintext angewendet, sondern auch
     
 Im ***Threefish-Algorithmus*** wird diese mathematische Transformation 72-mal hintereinander ausgeführt. Dabei werden stets andere Rotationsweiten als nur 37 und 5 verwendet. Alle vier Durchläufe wird ein sog. ***Rundenschlüssel*** auf den gesamten 256-Bit-Block addiert. Man erkennt, dass man 72 / 4 = 18 Rundenschlüssel benötigt. Diese müssen daher durch mathematische Tricks aus einem einzigen 256-Bit breiten Schlüsselblock gewonnen werden - dieses Verfahren wird als ***Schlüsselexpansion*** bezeichnet und kann bisweilen komplizierter sein als die eigentliche Verschlüsselung.
 
-Ziel dieses aufwändigen Durchwürfeln von Bits ist es, jeglichen Zusammenhang zwischen Plaintext, Schlüssel und Ciphertext zu verschleiern. Würde man auch nur ein einziges Bit im Plaintext oder im Schlüssel verändern, würde ein völlig anderer, unvorhersagbarer Ciphertext entstehen. Dies nennt man ***Diffusion***. Und doch ist all dies umkehrbar, wenn man die Rundenschlüssel kennt: Aus Addition wird Subtraktion, Linksrotation wird zu Rechtsrotation, XOR bleibt bestehen und alle Operationen werden in umgekehrter Reihenfolge angewendet, die Rundenschlüssel in umgekehrter Reihenfolge alle vier Runden subtrahiert - die Umkehroperation der oben dargestellten Transformation sei dem Leser überlassen.
+Ziel dieses aufwändigen Durchwürfeln von Bits ist es, jeglichen Zusammenhang zwischen Plaintext, Schlüssel und Ciphertext zu verschleiern. Würde man auch nur ein einziges Bit im Plaintext oder im Schlüssel verändern, würde ein völlig anderer, unvorhersagbarer Ciphertext entstehen. Dies nennt man ***Diffusion***. Und doch ist all dies umkehrbar, wenn man die Rundenschlüssel kennt: Aus Addition wird Subtraktion, Linksrotation wird zu Rechtsrotation, XOR bleibt bestehen und alle Operationen werden in umgekehrter Reihenfolge angewendet, die Rundenschlüssel in umgekehrter Reihenfolge alle vier Runden subtrahiert – die Umkehroperation der oben dargestellten Transformation sei dem Leser überlassen.
 
 ### Sicherheitsaspekte bei der Implementierung
 
@@ -71,7 +71,7 @@ Ein weiteres wichtiges Merkmal dieser Blockchiffre ist die Verwendung von **kons
 ![](https://upload.wikimedia.org/wikipedia/commons/f/f0/Tux_ecb.jpg)
 ![](https://upload.wikimedia.org/wikipedia/commons/a/a0/Tux_secure.jpg)
 
-Eine Technik, dies zu vermeiden, ist das Addieren des verschlüsselten vorherigen Blocks in den Plaintext des nächsten Blocks, das sog. Cipher-Block Chaining (CBC). Der erste Block wird mit einem zufälligen Wert (*Initialisierungsvektor*) versehen, welcher unverchlüsselt mit den Daten mitgeschickt wird. Dadurch ist der Empfänger zwar gezwungen, die Blöcke in der gleichen Reihenfolge zu entschlüsseln, in der sie verschlüsselt wurden, verräterische Muster werden allerdings versteckt.
+Eine Technik, dies zu vermeiden, ist das Addieren des verschlüsselten vorherigen Blocks in den Plaintext des nächsten Blocks, das sog. Cipher-Block Chaining (CBC). Der erste Block wird mit einem zufälligen Wert (*Initialisierungsvektor*) versehen, welcher unverschlüsselt mit den Daten mitgeschickt wird. Dadurch ist der Empfänger zwar gezwungen, die Blöcke in der gleichen Reihenfolge zu entschlüsseln, in der sie verschlüsselt wurden, verräterische Muster werden allerdings versteckt.
 
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/CBC_encryption.svg/601px-CBC_encryption.svg.png)
 
@@ -111,4 +111,4 @@ Beide könnten nun beispielsweise die X-Koordinate des gemeinsamen Punktes als Sc
 Zusammenfassung
 ---------------
 
-Moderne Kryptografie ist also keine schwarze Magie, sie bedient sich einfachen, pragmatischen Konzepten, die sich leicht auf modernen CPUs implementieren lassen (z.B. Addition modulo ````2^32``` oder ```2^64```, Rotation und XOR) oder geometrischen Konzepten, wie der Punktaddition auf elliptischen Kurven. Die eigentliche Schwierigkeit liegt einerseits darin, die Sicherheit mathematisch zu beweisen, und andererseits in den bereits angedeuteten Fallstricken beim Absichern der Implementierung. Bereits ein "zu wenig zufälliger" Zufallszahlengenerator kann jedes Verfahren zu Fall bringen. Dies ist auch ein Grund, weshalb es sehr wenige, wirklich sichere Implementierungen der jeweiligen Verfahren gibt. Der bedeutende Kryptologe Bruce Schneier schrieb: »Vertraue der Mathematik, Verschlüsselung ist dein Freund«, doch das wahre Sicherheitsrisiko steckt im Detail der Implementierung, ob gewollt beeinflusst durch Firmen, Regierungen oder Geheimdiensten oder unabsichtlich durch Programmierer.
+Moderne Kryptografie ist also keine schwarze Magie, sie bedient sich einfachen, pragmatischen Konzepten, die sich leicht auf modernen CPUs implementieren lassen (z.B. Addition modulo ````2^32``` oder ```2^64```, Rotation und XOR) oder geometrischen Konzepten, wie der Punktaddition auf elliptischen Kurven. Die eigentliche Schwierigkeit liegt einerseits darin, die Sicherheit mathematisch zu beweisen, und andererseits in den bereits angedeuteten Fallstricken beim Absichern der Implementierung. Bereits ein "zu wenig zufälliger" Zufallszahlengenerator kann jedes Verfahren zu Fall bringen. Dies ist auch ein Grund, weshalb es sehr wenige, wirklich sichere Implementierungen der jeweiligen Verfahren gibt. Der bedeutende Kryptologe Bruce Schneier schrieb: »Vertraue der Mathematik, Verschlüsselung ist dein Freund«, doch das wahre Sicherheitsrisiko steckt im Detail der Implementierung, ob gewollt beeinflusst durch Firmen, Regierungen oder Geheimdienste oder unabsichtlich durch Programmierer.
