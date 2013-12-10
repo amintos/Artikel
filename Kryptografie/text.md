@@ -1,7 +1,7 @@
 Moderne Verschlüsselungen
 =========================
 
-Die Kunst, eine Botschaft durch gezieltes „Verschleiern“ für fremde unkenntlich zu machen, ist fast so alt wie Schrift selbst. Schon die alten Ägypter setzten vor fünf Jahrtausenden spezielle Hieroglyphen ein, die nur einem ausgewählten Zirkel geistlicher bekannt waren. 
+Die Kunst, eine Botschaft durch gezieltes „Verschleiern“ für Fremde unkenntlich zu machen, ist fast so alt wie Schrift selbst. Schon die alten Ägypter setzten vor fünf Jahrtausenden spezielle Hieroglyphen ein, die nur einem ausgewählten Zirkel geistlicher bekannt waren. 
 
 
 ![](http://bits.wikimedia.org/static-1.23wmf2/extensions/wikihiero/img/hiero_M2.png) ![ ](http://bits.wikimedia.org/static-1.23wmf2/extensions/wikihiero/img/hiero_L4.png) ![](https://bits.wikimedia.org/static-1.23wmf2/extensions/wikihiero/img/hiero_S28.png)
@@ -94,7 +94,7 @@ Die bemerkenswerte Eigenschaft dieser Kurven ist, dass man auf ihnen eine ***Add
 
 Mit diesen Werkzeugen können wir uns eine Multiplikation  ```n*P``` definieren als ```n```-maliges addieren. Das lässt sich durch mathematische Abkürzungen allerdings beschleunigen, z.B. ist ```15*P = 16*P - P = 2*2*2*2*P + (-P)``` und benötigt nur eine Negation, eine Addition und vier Verdoppelungen statt 15 Additionen. Diese Darstellung des Koeffizienten ```n``` heißt *Non-adjacent form*.
 
-In der Praxis kommen allerdings keine kontinuierlichen elliptischen Kurven zum Einsatz, sondern nur deren **ganzzahlige Lösungen**. Weiterhin werden alle mathematischen Operationen modulo einer Primzahl ```N``` ausgeführt - das bedeutet, dass jede X- oder Y-Koordinate "überläuft", sobald sie größer als ```N - 1``` wird. Gute ```N``` erlauben eine große Anzahl an ganzzahligen Lösungen, z.B. bietet sich die Mersenne-Primzahl ```2^521 - 1``` an. Die Punktmultiplikation funktioniert hier noch immer.
+In der Praxis kommen allerdings keine kontinuierlichen elliptischen Kurven zum Einsatz, sondern nur deren **ganzzahlige Lösungen**. Weiterhin werden alle mathematischen Operationen modulo einer Primzahl ```N``` ausgeführt - das bedeutet, dass jede X- oder Y-Koordinate "überläuft", sobald sie größer als ```N - 1``` wird und es eine endliche Anzahl an Punkten gibt. Gute ```N``` erlauben eine große Anzahl an ganzzahligen Lösungen, z.B. bietet sich die Mersenne-Primzahl ```2^521 - 1``` an. Die Punktmultiplikation funktioniert hier noch immer.
 
 ### Schlüsselaustausch mit Punkten
 
@@ -105,13 +105,13 @@ Punktmultiplikation ist assoziativ, d.h. ```a*(b*P) = b*(a*P)```. Beim ECDH-Schl
 3. Bob erzeugt seine private Zufallszahl ```b``` und veröffentlicht seinen öffentlichen Schlüssel ```b*P```
 4. Alice kann nun Bobs öffentlichen Schlüssel ```b*P``` beziehen und ihn mit ihrem privaten Schlüssel multiplizieren. Sie erhält ```a*(b*P)```. Bob kann seinerseits Alices öffentlichen Schlüssel mit seinem privaten multiplizieren und erhält ```b*(a*P)``` und somit den gleichen Punkt. 
 
-Beide könnten nun beispielsweise die X-Koordinate des gemeinsamen Punktes als Schlüssel für ihre symmetrische Blockchiffre verwenden und so sicher kommunizieren.
+Beide könnten nun beispielsweise die X-Koordinate des gemeinsamen Punktes als Schlüssel für ihre symmetrische Blockchiffre verwenden und so sicher kommunizieren. Sie sollten sich allerdings sicher sein, dass sie jeweils den öffentlichen Schlüssel des anderen und nicht den eines Angreifers erhalten haben, beispielsweise mittels einer digitalen Signatur.
 
 
 Zusammenfassung
 ---------------
 
-
+Moderne Kryptografie ist also keine schwarze Magie, sie bedient sich einfachen, pragmatischen Konzepten, die sich leicht auf modernen CPUs implementieren lassen (z.B. Addition modulo ````2^32``` oder ```2^64```, Rotation und XOR) oder geometrischen Konzepten, wie der Punktaddition auf elliptischen Kurven. Die eigentliche Schwierigkeit liegt einerseits darin, die Sicherheit mathematisch zu beweisen, und andererseits in den bereits angedeuteten Fallstricken beim Absichern der Implementierung. Bereits ein "zu wenig zufälliger" Zufallszahlengenerator kann jedes Verfahren zu Fall bringen. Dies ist auch ein Grund, weshalb es sehr wenige, wirklich sichere Implementierungen der jeweiligen Verfahren gibt. Der bedeutende Kryptologe Bruce Schneier schrieb: »Vertraue der Mathematik, Verschlüsselung ist dein Freund«, doch das wahre Sicherheitsrisiko steckt im Detail der Implementierung, ob gewollt beeinflusst durch Firmen, Regierungen oder Geheimdiensten oder unabsichtlich durch Programmierer.
 
 ### (Die Rücktransformation in Threefish)
     1.)  B = (D' XOR A') >>> 5
