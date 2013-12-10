@@ -112,9 +112,3 @@ Zusammenfassung
 ---------------
 
 Moderne Kryptografie ist also keine schwarze Magie, sie bedient sich einfachen, pragmatischen Konzepten, die sich leicht auf modernen CPUs implementieren lassen (z.B. Addition modulo ````2^32``` oder ```2^64```, Rotation und XOR) oder geometrischen Konzepten, wie der Punktaddition auf elliptischen Kurven. Die eigentliche Schwierigkeit liegt einerseits darin, die Sicherheit mathematisch zu beweisen, und andererseits in den bereits angedeuteten Fallstricken beim Absichern der Implementierung. Bereits ein "zu wenig zufälliger" Zufallszahlengenerator kann jedes Verfahren zu Fall bringen. Dies ist auch ein Grund, weshalb es sehr wenige, wirklich sichere Implementierungen der jeweiligen Verfahren gibt. Der bedeutende Kryptologe Bruce Schneier schrieb: »Vertraue der Mathematik, Verschlüsselung ist dein Freund«, doch das wahre Sicherheitsrisiko steckt im Detail der Implementierung, ob gewollt beeinflusst durch Firmen, Regierungen oder Geheimdiensten oder unabsichtlich durch Programmierer.
-
-### (Die Rücktransformation in Threefish)
-    1.)  B = (D' XOR A') >>> 5
-    2.)  D = (B' XOR C') >>> 37
-    3.)  C = C' - D  (modulo 2^64)
-    4.)  A = A' - B  (modulo 2^64)
