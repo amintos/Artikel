@@ -41,6 +41,7 @@ und ersetzt sie durch die gleiche Anzahl Geheimbuchstaben,
 werden Korrelationen undeutlicher. 
 Doch eine solche Übersetzungstabelle hätte bereits 676 Einträge.
 
+
     AA | AB | AC | ... | BA | BB | ... | ZY | ZZ
     RP | RQ | RR | ... | SP | SQ | ... | RN | RO 
 
@@ -68,6 +69,7 @@ Blockchiffren im 21. Jahrhundert
 
 Möchte man den Fallstricken der einfachen Addition entgehen, 
 muss man sich weiteren Operationen bedienen. Häufige Operationen sind folgende:
+
 
     Addition:        1100   +   0101  =  0001   (modulo 2^4)
     Subtraktion:     1100   -   0101  =  0111   (modulo 2^4)
