@@ -58,7 +58,7 @@ Erkennbar wird dies an der nachlassenden CO2-Produktion: Die Maische schäumt sc
 Daraufhin wird der neue Sake ausgepresst und haltbar gemacht, 
 was heutzutage durch Mikrofiltration mittels Aktivkohle und Erhitzen auf 65°C (Pasteurisieren) geschieht. 
 Um den Geschmack abzurunden, wird er einige Monate in Tanks oder Holzfässern gelagert,
- bevor er auf 14 - 17% Alkoholgehalkt verdünnt und abgefüllt wird.
+ bevor er auf 14 - 17% Alkoholgehalt verdünnt und abgefüllt wird.
 
 Man sieht also, dass es bei der Zubereitung eine immense Anzahl an Parametern gibt, die den Geschmack bestimmen: 
 Höhere Polierraten erzeugen stärkeres Reis-Aroma, 
