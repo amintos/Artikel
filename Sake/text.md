@@ -29,3 +29,4 @@ Man sieht also, dass es bei der Zubereitung eine immense Anzahl an Parametern gi
 
 In Anbetracht eines solchen Aufwands ist es nicht verwunderlich, dass man für den Preis eines edlen Weißweins einen eher herben Reiswein mit hoher Polierrate, schnellem Brauprozess und kaum Reife bekommt. Wer gerne Premium-Sake probieren möchte, wird besonders im Online-Handel und einigen gut sortierten Japan- und Asia-Märkten fündig: Masumi, Okunomatsu und Akashi-tai sind Marken, die unterdessen vermehrt in Europa importiert werden. Die verbreiteten 0,25L oder 0,3L-Flaschen kosten zwischen 8 und 30€, 0,7L erhält man für 15 bis 50€, einige besonders edle Sorten kosten über 90€. Wer sich allerdings umfassend beraten lassen will, für den führt kein Weg an einem Spezialgeschäft (z.b. Sake-Kontor Berlin, www.sake-kontor.de) oder einer Wein-Messe (z.B. 20. bis 22. Februar 2015 in Berlin), vorbei.
 
+![](sake-brewing.png)
