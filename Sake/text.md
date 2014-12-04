@@ -1,19 +1,18 @@
 # Sake 
 Das japanische Traditionsgetränk aus Reis und Wasser
 
-In vielen asiatischen Restaurants kann man mittlerweile *Sake*, den traditionellen japanischen Reiswein, bestellen. 
+In vielen asiatischen Restaurants kann man mittlerweile *Sake* (日本酒), den traditionellen japanischen Reiswein, bestellen. 
 Serviert wird eine dampfende Karaffe mit einem kleinen Schälchen, in das man die heiße Flüssigkeit umfüllt, um sie vorsichtig zu schlürfen. 
-Wer dieses Getränk zum ersten Mal probiert und es schafft, sich nicht sofort die Zunge zu verbrennen, 
-wird ein Getränk erleben, dass etwas weniger sauer als Weißwein, aber ähnlich herb und weniger fruchtig daherkommt.
+Wer dieses Getränk zum ersten Mal probiert und es schafft, sich nicht sofort die Zunge zu verbrennen, dem wird sich eine interessante Erfahrung offenbaren: Sake kommt in der Regel etwas weniger sauer als Weißwein, aber ähnlich herb und weniger fruchtig daher.
 
 Leider handelt es sich hierbei meist um Sake der unteren Qualitätsstufen. 
 Tatsächlich gibt es Sake in unzähligen Varianten, 
 z.B. fruchtige, blumig duftende Sorten, die ähnlich wie Weißwein kalt getrunken oder sogar auf Eis serviert werden. 
-Während einige Sorten ein schokoladiges Aroma haben, schmeckt bei anderen eine leichte Joghurt- oder gar Litschi-Note durch. 
+Während einige Sorten ein schokoladiges Aroma haben, schimmert bei anderen eine leichte Joghurt- oder gar Litschi-Note durch. 
 Manche machen durch ihr erdiges Heu-Aroma unverkennbar ihr Ausgangsprodukt deutlich: 
 Die Samen einer Graspflanze.
 
-Spätestens nachdem man drei oder vier verschiedene Sake probiert hat, drängt sich unwillkürliche Neugier auf, wie aus den Ausgangsprodukten Reis und Wasser ein derart vielfältiges Getränk entstehen kann. 
+Spätestens nachdem man drei oder vier verschiedene Sake probiert hat, drängt sich unwillkürlich die Neugier auf, wie aus den Ausgangsprodukten Reis und Wasser ein derart vielfältiges Getränk entstehen kann. 
 Ähnlich wie bei Wein oder Bier ist auch bei Reiswein sowohl das Ausgangsprodukt, die kleinen Details des Brau- und Gärprozesses und die Lagerung von Bedeutung.
 
 ## Wein aus Reis - gar nicht so einfach
@@ -23,7 +22,7 @@ Der Herstellungsprozess ist aufwändiger als bei Wein oder Bier. Das liegt daran
 Das Prinzip, mit dem man dennoch Reis vergären kann, ist etwa um 300 v.Chr. in China entdeckt worden: 
 Ein ungiftiger Schimmelpilz, *Koji* genannnt, produziert das Enzym Amylase, 
 was Stärke zu Glucose spaltet. 
-Der Pilz kam rasch zum Brauen von Sojasoße zum einsatz; 
+Der Pilz kam rasch zum bräunen von Sojasoße zum einsatz; 
 erste Sake-Brauereien gab es jedoch erst im japanischen Kaiserreich ca. 1000 Jahre später. 
 Der Brauprozess wird bis heute perfektioniert und läuft derzeit in etwa wie folgt.
 
