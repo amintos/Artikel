@@ -20,8 +20,8 @@ Der Herstellungsprozess ist aufwändiger als bei Wein oder Bier. Das liegt daran
 Das Prinzip, mit dem man dennoch Reis vergären kann, ist etwa um 300 v.Chr. in China entdeckt worden: 
 Ein ungiftiger Schimmelpilz, *Koji* genannnt, produziert das Enzym Amylase, 
 was Stärke zu Glucose spaltet. 
-Der Pilz kam rasch zum fermentieren von Sojasoße zum einsatz; 
-erste Sake-Brauereien gab es jedoch erst im japanischen Kaiserreich ca. 1000 Jahre später. 
+Der Pilz kam rasch zum Fermentieren von Sojasoße zum Einsatz; 
+Sake-Brauereien gab es jedoch erst im japanischen Kaiserreich ca. 1000 Jahre später. 
 
 ## Der Brauprozess im Detail
 
@@ -29,26 +29,26 @@ Ausgangsprodukt für Sake sind spezielle Reissorten.
 Sie zeichnen sich durch einen hohen, in der Mitte des Reiskorns konzentrierten Stärkegehalt aus. 
 
 Die Reiskörner werden zunächst poliert, dadurch verlieren sie die öl- und eiweißhaltige äußere Schicht. 
-Als "Polierrate" bezeichnet man den Gewichtsanteil der übrig gebliebenen Stärkekörnchen. 
+Als *Polierrate* bezeichnet man den Gewichtsanteil der übrig gebliebenen Stärkekörnchen. 
 Hochwertige Sake haben eine sehr niedrige Polierrate: 35 - 50% des Ursprungskorns. 
 
 Beim Polieren entsteht Hitze, die das Korn trocken und rissig macht. 
 Daher ruht es danach wenige Monate, um Luftfeuchtigkeit aufzunehmen. 
-Danach wird der Reis gewaschen, 
+Daraufhin wird der Reis gewaschen, 
 über Nacht eingeweicht und schließlich gedämpft, 
 bis er innen weich ist und genügend Wasser aufgenommen hat. 
 Ein Großteil davon (sog. *Zugabe-Reis*) wird beiseite gestellt.
 
 Etwa ein Fünftel von dem vorbereiteten Reis wird mit der Koji-Kultur (*Aspergillus oryzae*) besprenkelt und bei hoher Luftfeuchtigkeit einige Tage reifen gelassen. 
-Etwas Koji-Reis und etwas Zugabe-Reis wird nun mit Brauhefe (*Saccharomyces cerevisiae*) versetzt. 
+Der Koji-Reis wird nun mit Brauhefe (*Saccharomyces cerevisiae*) versetzt. 
 Nach ein bis zwei Wochen in kühler Umgebung hat sich die Hefe hinreichend vermehrt, um als Ansatz (*Hefestarter*) für die *Hauptmaische* zu dienen. 
 
 Während der Gärung wird der restliche Zugabe-Reis über mehrere Tage verteilt in die Hauptmaische gegeben.
 Das verhindert, dass der Gärprozess gebremst wird, weil Hefe oder Koji-Pilz zu stark verdünnt werden. 
-Die Umwandlung von Reisstärke in Glucose durch das Amylase-Enzym aus der Koji-Kultur (Hydrolyse) geschieht nun parallel zur Umwandlung der Glucose zu Ethanol durch die Hefe.
+Die Umwandlung von Reisstärke in Glucose durch das Amylase-Enzym aus der Koji-Kultur geschieht nun parallel zur Umwandlung der Glucose zu Ethanol durch die Hefe.
 
-Nach 18 - 32 Tagen erschwert der Alkoholgehalt der Hefe zunehmend die Arbeit. 
-Erkennbar wird dies an der nachlassenden CO2-Produktion: Die Maische schäumt schlichtweg nicht mehr so gut. 
+Nach 18 - 32 Tagen erschwert der Alkoholgehalt zunehmend die Arbeit der Hefe. 
+Erkennbar wird dies an der nachlassenden CO_2-Produktion: Die Maische schäumt schlichtweg nicht mehr so gut. 
 Daraufhin wird der neue Sake ausgepresst und durch Filtern und Pasteurisieren bei 65°C haltbar gemacht.
 Um den Geschmack abzurunden, wird er einige Monate in Tanks oder Holzfässern gelagert,
  bevor er auf 14 - 17% Alkoholgehalt verdünnt und abgefüllt wird.
@@ -67,10 +67,10 @@ Letztendlich spielt, wie bei jedem Wein, das Holz eine Rolle, aus dem das Fass z
 In Anbetracht eines solchen Aufwands ist es nicht verwunderlich, 
 dass man für den Preis eines guten Weißweins einen eher herben Reiswein mit hoher Polierrate, schnellem Brauprozess und kaum Reife bekommt. 
 Wer gerne Premium-Sake probieren möchte, wird besonders im Online-Handel und einigen gut sortierten Japan- und Asia-Märkten fündig: 
-Masumi, Okunomatsu und Akashi-tai sind Marken, die unterdessen vermehrt in Europa importiert werden. 
-Die verbreiteten 0,25L oder 0,3L-Flaschen kosten zwischen 8 und 30€, 0,7L erhält man für 15 bis 90€, 
+*Masumi*, *Okunomatsu* oder *Akashi-tai* sind Marken, die zunehmend in Europa auftauchen. 
+Die verbreiteten 0,3L-Flaschen kosten zwischen 8 und 30€.
 Wer sich allerdings umfassend beraten lassen will, für den führt kein Weg an einem Spezialgeschäft (z.b. Sake-Kontor Berlin, www.sake-kontor.de) 
-oder einer Wein-Messe (z.B. 20. bis 22. Februar 2015 in Berlin), vorbei.
+oder einer Wein-Messe (z.B. 20. bis 22. Februar 2015 in Berlin) vorbei.
 
 ![](sake-brewing.png)
 
