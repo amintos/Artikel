@@ -1,4 +1,5 @@
-# Sake 
+# Sake
+*Japanischer Reiswein auf dem Vormarsch in Europa*
 
 In vielen asiatischen Restaurants kann man mittlerweile *Sake* (日本酒), den traditionellen japanischen Reiswein, bestellen. 
 Serviert wird eine dampfende Karaffe mit einem kleinen Schälchen, in das man die heiße Flüssigkeit umfüllt, um sie vorsichtig zu schlürfen. 
@@ -10,12 +11,12 @@ Tatsächlich gibt es Sake in unzähligen Varianten,
 z.B. fruchtige, blumig duftende Sorten, die ähnlich wie Weißwein kalt getrunken oder sogar auf Eis serviert werden. 
 Während einige Sorten ein schokoladiges oder erdiges Aroma haben, schimmert bei anderen eine leichte Joghurt- oder gar Litschi-Note durch. 
 
-Spätestens nachdem man drei oder vier verschiedene Sake probiert hat, drängt sich unwillkürlich die Neugier auf, wie aus den Ausgangsprodukten Reis und Wasser ein derart vielfältiges Getränk entstehen kann. 
-Ähnlich wie bei Wein oder Bier ist auch bei Reiswein sowohl das Ausgangsprodukt, die kleinen Details des Brau- und Gärprozesses und die Lagerung von Bedeutung.
+Nach dem Probieren von drei bis vier Sorten drängt sich unwillkürlich die Neugier auf, wie aus den Ausgangsprodukten Reis und Wasser ein derart vielfältiges Getränk entstehen kann. 
+Ähnlich wie bei Wein oder Bier ist auch bei Reiswein sowohl das Ausgangsprodukt, die kleinen Details des Brau- und Gärprozesses, und die Lagerung von Bedeutung.
 
 ## Wein aus Reis - gar nicht so einfach
 
-Der Herstellungsprozess ist aufwändiger als bei Wein oder Bier. Das liegt daran, dass man zum vergären Zucker benötigt. Reis enthält im Gegensatz zu Trauben aber keinen Zucker und verglichen mit Malz auch keine Enzyme, die Stärke in Zucker umwandeln können. 
+Der Herstellungsprozess ist aufwändiger als bei Wein oder Bier. Das liegt daran, dass man zum Vergären Zucker benötigt. Reis enthält im Gegensatz zu Trauben aber keinen Zucker und verglichen mit Malz auch keine Enzyme, die Stärke in Zucker umwandeln können. 
 
 Das Prinzip, mit dem man dennoch Reis vergären kann, ist etwa um 300 v.Chr. in China entdeckt worden: 
 Ein ungiftiger Schimmelpilz, *Koji* genannnt, produziert das Enzym Amylase, 
@@ -25,8 +26,7 @@ Sake-Brauereien gab es jedoch erst im japanischen Kaiserreich ca. 1000 Jahre sp�
 
 ## Der Brauprozess im Detail
 
-Ausgangsprodukt für Sake sind spezielle Reissorten. 
-Sie zeichnen sich durch einen hohen, in der Mitte des Reiskorns konzentrierten Stärkegehalt aus. 
+Ausgangsprodukt für Sake sind spezielle, besonders stärkehaltige Reissorten. 
 
 Die Reiskörner werden zunächst poliert, dadurch verlieren sie die öl- und eiweißhaltige äußere Schicht. 
 Als *Polierrate* bezeichnet man den Gewichtsanteil der übrig gebliebenen Stärkekörnchen. 
@@ -51,7 +51,7 @@ Nach 18 - 32 Tagen erschwert der Alkoholgehalt zunehmend die Arbeit der Hefe.
 Erkennbar wird dies an der nachlassenden CO_2-Produktion: Die Maische schäumt schlichtweg nicht mehr so gut. 
 Daraufhin wird der neue Sake ausgepresst und durch Filtern und Pasteurisieren bei 65°C haltbar gemacht.
 Um den Geschmack abzurunden, wird er einige Monate in Tanks oder Holzfässern gelagert,
- bevor er auf 14 - 17% Alkoholgehalt verdünnt und abgefüllt wird.
+ bevor er verdünnt und abgefüllt wird.
 
 Bei der Zubereitung gibt es also eine immense Anzahl an Parametern, die den Geschmack bestimmen: 
 Je niedriger die Polierrate, desto feiner der Geschmack. Das Brauwasser kann durch Härte und Reinheit das Ergebnis beeinflussen, 
@@ -67,7 +67,7 @@ Letztendlich spielt, wie bei jedem Wein, das Holz eine Rolle, aus dem das Fass z
 In Anbetracht eines solchen Aufwands ist es nicht verwunderlich, 
 dass man für den Preis eines guten Weißweins einen eher herben Reiswein mit hoher Polierrate, schnellem Brauprozess und kaum Reife bekommt. 
 Wer gerne Premium-Sake probieren möchte, wird besonders im Online-Handel und einigen gut sortierten Japan- und Asia-Märkten fündig: 
-*Masumi*, *Okunomatsu* oder *Akashi-tai* sind Marken, die zunehmend in Europa auftauchen. 
+*Masumi*, *Okunomatsu* oder *Akashi-tai* sind Qualitätsmarken, die zunehmend in Europa auftauchen. 
 Die verbreiteten 0,3L-Flaschen kosten zwischen 8 und 30€.
 Wer sich allerdings umfassend beraten lassen will, für den führt kein Weg an einem Spezialgeschäft (z.b. Sake-Kontor Berlin, www.sake-kontor.de) 
 oder einer Wein-Messe (z.B. 20. bis 22. Februar 2015 in Berlin) vorbei.
