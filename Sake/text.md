@@ -72,6 +72,6 @@ Die verbreiteten 0,25L oder 0,3L-Flaschen kosten zwischen 8 und 30€, 0,7L erh�
 Wer sich allerdings umfassend beraten lassen will, für den führt kein Weg an einem Spezialgeschäft (z.b. Sake-Kontor Berlin, www.sake-kontor.de) 
 oder einer Wein-Messe (z.B. 20. bis 22. Februar 2015 in Berlin), vorbei.
 
-![](sake-brewing.png)
+![](sake-brewing.svg)
 
 **[Fotos von Sake-Flasche und Sake-Set einzufügen]**
